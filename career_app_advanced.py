@@ -6,12 +6,12 @@ from fpdf import FPDF
 from io import BytesIO
 from pathlib import Path
 
-DATA_FILE="onet_merged.csv"
+DATA_FILE="Career dataset.csv"
 
 @st.cache_data
 def load_data():
     if not Path(DATA_FILE).exists():
-        st.error("Run data_builder_onet.py first.")
+        st.error("Run Career dataset     first.")
         return pd.DataFrame()
     df=pd.read_csv(DATA_FILE)
     df["Attributes_List"]=df["Attributes"].fillna("").apply(lambda s:[x.strip() for x in s.split("|") if x.strip()])
